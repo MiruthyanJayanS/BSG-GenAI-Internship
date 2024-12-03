@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Financial Chatbot to answer your financial queries">
+    <title>Financial Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Financial Chatbot</h1>
+        <form method="POST" action="/get_response">
+            <label for="query">Enter your query:</label>
+            <input type="text" id="query" name="query" placeholder="e.g., What is the total revenue?" required>
+            <button type="submit">Ask</button>
+        </form>
+        {% if query and response %}
+            <div class="response">
+                <strong>You asked:</strong> {{ query }}<br>
+                <strong>Chatbot response:</strong><br>{{ response | safe }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
